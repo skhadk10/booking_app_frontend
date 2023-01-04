@@ -2,11 +2,14 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { login } from "../actions/auth";
 import LoginForm from "../components/LoginForm";
-
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("alijatamang@gmail.com");
   const [password, setPassword] = useState("123456");
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("SEND LOGIN DATA", { email, password });
@@ -15,9 +18,17 @@ const Login = () => {
 
       if (res.data) {
         console.log(
-          "SAVE USER RES IN REDUX AND LOCAL STORAGE THEN REDIRECT ===> "
+          "SAVE USER RES IN REDUX AND LOCAL STORAGE THEN REDIRECT ===> ",
+          res.data
         );
-        console.log(res.data);
+        // save user and token to localstorage
+        window.localStorage.setItem("auth", JSON.stringify(res.data));
+        // save user and token to redux
+        dispatch({
+          type: 'LOGGED_IN_USER',
+          payload: res.data,
+        });
+        navigate("/dashboard");
       }
     } catch (err) {
       console.log(err);

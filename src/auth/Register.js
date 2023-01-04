@@ -3,12 +3,14 @@ import RegisterForm from "../components/RegisterForm";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { register } from "../actions/auth";
+import { useNavigate } from "react-router-dom";
 
-const Register = ({ history }) => {
+const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate=useNavigate()
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -19,7 +21,7 @@ const Register = ({ history }) => {
       });
       console.log("REGISTER USER ===> ", res);
       toast.success("Register success. Please login.");
-      history.push("/login");
+      navigate("/login");
     } catch (err) {
       console.log(err);
       if (err.response.status === 400) toast.error(err.response.data);
