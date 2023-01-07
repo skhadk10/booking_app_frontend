@@ -14,13 +14,21 @@ const TopNav = () => {
     window.localStorage.removeItem("auth");
     navigate("/login");
   };
-  useEffect(() => {}, []);
+  useEffect(() => {logout()}, []);
 
   return (
     <div className="nav bg-light d-flex justify-content-between">
       <Link to="/" className="nav-link">
         Home
       </Link>
+      {auth !== null && (
+        <>
+          <Link className="nav-link" to="/Dashboard">
+            Dashboard
+          </Link>
+        
+        </>
+      )}
       {auth !== null && (
         <a className="nav-link pointer" onClick={logout}>
           Logout

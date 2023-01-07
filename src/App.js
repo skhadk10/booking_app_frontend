@@ -9,6 +9,7 @@ import TopNav from "./components/TopNav";
 import Dashboard from "./user/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
 import DashboardSeller from "./user/DashboardSeller";
+import NewHotel from "./hotel/New";
 function App() {
   return (
     <BrowserRouter>
@@ -23,6 +24,9 @@ function App() {
             </PrivateRoute>} />
           <Route exact path="/dashboard/seller" element={ <PrivateRoute>
               <DashboardSeller />
+            </PrivateRoute>} />
+          <Route exact path="/hotels/new" element={ <PrivateRoute>
+              <NewHotel />
             </PrivateRoute>} />
       </Routes>
       
