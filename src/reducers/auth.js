@@ -1,10 +1,12 @@
-let useState;
+let userState;
+
 if (window.localStorage.getItem("auth")) {
-  useState = JSON.parse(window.localStorage.getItem("auth"));
+  userState = JSON.parse(window.localStorage.getItem("auth"));
 } else {
-  useState = null;
+  userState = null; // {}
 }
-const authReducer = (state = {}, action) => {
+
+export const authReducer = (state = userState, action) => {
   switch (action.type) {
     case "LOGGED_IN_USER":
       return { ...state, ...action.payload };
@@ -14,5 +16,3 @@ const authReducer = (state = {}, action) => {
       return state;
   }
 };
-
-export default authReducer;

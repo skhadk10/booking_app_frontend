@@ -1,9 +1,7 @@
-import React from 'react'
-
 const NewHotel = () => {
   return (
-    <div>Post a new hotel</div>
-  )
-}
+    <div className="container-fluid h1 p-5 text-center">Post a new hotel</div>
+  );
+};
 
-export default NewHotel
+export default NewHotel;

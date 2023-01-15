@@ -5,12 +5,13 @@ import { toast } from "react-toastify";
 import { register } from "../actions/auth";
 import { useNavigate } from "react-router-dom";
 
-const Register = () => {
+const Register = ({ history }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate=useNavigate()
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

@@ -4,12 +4,14 @@ import { login } from "../actions/auth";
 import LoginForm from "../components/LoginForm";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
 const Login = () => {
-  const [email, setEmail] = useState("alijatamang@gmail.com");
-  const [password, setPassword] = useState("123456");
+  const [email, setEmail] = useState("alijatamang72@gmail.com");
+  const [password, setPassword] = useState("1234567");
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const navigate=useNavigate()
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("SEND LOGIN DATA", { email, password });
@@ -18,14 +20,14 @@ const Login = () => {
 
       if (res.data) {
         console.log(
-          "SAVE USER RES IN REDUX AND LOCAL STORAGE THEN REDIRECT ===> ",
-          res.data
+          "SAVE USER RES IN REDUX AND LOCAL STORAGE THEN REDIRECT ===> "
         );
-        // save user and token to localstorage
+        // console.log(res.data);
+        // save user and token to local storage
         window.localStorage.setItem("auth", JSON.stringify(res.data));
         // save user and token to redux
         dispatch({
-          type: 'LOGGED_IN_USER',
+          type: "LOGGED_IN_USER",
           payload: res.data,
         });
         navigate("/dashboard");
@@ -35,7 +37,6 @@ const Login = () => {
       if (err.response.status === 400) toast.error(err.response.data);
     }
   };
-  
 
   return (
     <>
