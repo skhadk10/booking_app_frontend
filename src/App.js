@@ -10,6 +10,7 @@ import Dashboard from "./user/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
 import DashboardSeller from "./user/DashboardSeller";
 import NewHotel from "./hotel/New";
+import StripeCallback from "./stripe/StripeCallback";
 function App() {
   return (
     <BrowserRouter>
@@ -18,21 +19,45 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/login" element={<Login />} />
-        <Route exact path="/register" element={<Register />} />  
-          <Route exact path="/dashboard" element={ <PrivateRoute>
+        <Route exact path="/register" element={<Register />} />
+        <Route
+          exact
+          path="/dashboard"
+          element={
+            <PrivateRoute>
               <Dashboard />
-            </PrivateRoute>} />
-          <Route exact path="/dashboard/seller" element={ <PrivateRoute>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path="/dashboard/seller"
+          element={
+            <PrivateRoute>
               <DashboardSeller />
-            </PrivateRoute>} />
-          <Route exact path="/hotels/new" element={ <PrivateRoute>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path="/hotels/new"
+          element={
+            <PrivateRoute>
               <NewHotel />
-            </PrivateRoute>} />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          exact
+          path="/stripe/callback"
+          element={
+            <PrivateRoute>
+              <StripeCallback />
+            </PrivateRoute>
+          }
+        />
       </Routes>
-      
-    
-       
-      
     </BrowserRouter>
   );
 }
