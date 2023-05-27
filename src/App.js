@@ -9,7 +9,7 @@ import TopNav from "./components/TopNav";
 import Dashboard from "./user/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
 import DashboardSeller from "./user/DashboardSeller";
-import NewHotel from "./hotel/New";
+import NewHotel from "./hotel/NewHotel";
 import StripeCallback from "./stripe/StripeCallback";
 function App() {
   return (
