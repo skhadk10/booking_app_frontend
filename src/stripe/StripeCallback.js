@@ -27,7 +27,7 @@ if(auth && auth.token){
             payload:res.data
           })
           // redirect user to dashboard
-          window.location.href="/dashboard/sellers"
+          window.location.href="/dashboard/seller"
       })
     } catch (err) {
       console.log(err)
